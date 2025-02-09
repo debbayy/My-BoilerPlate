@@ -1,11 +1,8 @@
-import { Button } from '@mantine/core'
+import { Button } from "@mantine/core";
+import { IGlobalButton } from "./GlobalButton.types";
 
-const GlobalButton = () => {
-  return (
-    <>
-      <Button>Button</Button>
-    </>
-  )
-}
+const GlobalButton = (ButtonData: IGlobalButton) => {
+  return <Button>{ButtonData.label}</Button>;
+};
 
-export default GlobalButton
+export default GlobalButton;
