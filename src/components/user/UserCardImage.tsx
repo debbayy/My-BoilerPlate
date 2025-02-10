@@ -30,12 +30,57 @@ const userData = [
       { value: "432", label: "Follows" },
       { value: "900", label: "Posts" },
     ],
+  }, {
+    name: "Alice Rocker",
+    avatar:
+      "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+    stats: [
+      { value: "12K", label: "Followers" },
+      { value: "432", label: "Follows" },
+      { value: "900", label: "Posts" },
+    ],
+  }, {
+    name: "Alice Rocker",
+    avatar:
+      "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+    stats: [
+      { value: "12K", label: "Followers" },
+      { value: "432", label: "Follows" },
+      { value: "900", label: "Posts" },
+    ],
+  }, {
+    name: "Alice Rocker",
+    avatar:
+      "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+    stats: [
+      { value: "12K", label: "Followers" },
+      { value: "432", label: "Follows" },
+      { value: "900", label: "Posts" },
+    ],
+  }, {
+    name: "Alice Rocker",
+    avatar:
+      "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+    stats: [
+      { value: "12K", label: "Followers" },
+      { value: "432", label: "Follows" },
+      { value: "900", label: "Posts" },
+    ],
+  }, {
+    name: "Alice Rocker",
+    avatar:
+      "https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-9.png",
+    stats: [
+      { value: "12K", label: "Followers" },
+      { value: "432", label: "Follows" },
+      { value: "900", label: "Posts" },
+    ],
   },
 ];
 
 export function UserCardImage() {
   return (
-    <div className="flex gap-5">
+    <div className="flex gap-5 flex-wrap justify-center">
       {userData.map((user, index) => (
         <Card key={index} withBorder padding="xl" radius="md">
           <Card.Section
