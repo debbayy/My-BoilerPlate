@@ -29,6 +29,7 @@ import { useDisclosure } from "@mantine/hooks";
 import lpkLogo from "../../assets/logo/melati.jpeg";
 
 import classes from "./HeaderMenu.module.css";
+import { Link } from "react-router-dom";
 
 const mockdata = [
   {
@@ -63,13 +64,45 @@ const mockdata = [
   },
 ];
 
+const mockdataLowongan = [
+  {
+    icon: IconCode,
+    title: "Majikan",
+    description: "This Pokémon’s cry is very loud and distracting",
+  },
+  {
+    icon: IconCoin,
+    title: "Pekerja",
+    description: "The fluid of Smeargle’s tail secretions changes",
+    },
+]
+
 export function HeaderMenu() {
   const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] =
     useDisclosure(false);
   const [linksOpened, { toggle: toggleLinks }] = useDisclosure(false);
+
   const theme = useMantineTheme();
 
   const links = mockdata.map((item) => (
+    <UnstyledButton className={classes.subLink} key={item.title}>
+      <Group wrap="nowrap" align="flex-start">
+        <ThemeIcon size={34} variant="default" radius="md">
+          <item.icon size={22} color={theme.colors.blue[6]} />
+        </ThemeIcon>
+        <div>
+          <Text size="sm" fw={500}>
+            {item.title}
+          </Text>
+          <Text size="xs" c="dimmed">
+            {item.description}
+          </Text>
+        </div>
+      </Group>
+    </UnstyledButton>
+  ));
+
+  const linkLowongan = mockdataLowongan.map((item) => (
     <UnstyledButton className={classes.subLink} key={item.title}>
       <Group wrap="nowrap" align="flex-start">
         <ThemeIcon size={34} variant="default" radius="md">
@@ -110,7 +143,7 @@ export function HeaderMenu() {
                 <a href="#" className={classes.link}>
                   <Center inline>
                     <Box component="span" mr={5}>
-                      Features
+                      Profesi
                     </Box>
                     <IconChevronDown size={16} color={theme.colors.blue[6]} />
                   </Center>
@@ -119,7 +152,7 @@ export function HeaderMenu() {
 
               <HoverCard.Dropdown style={{ overflow: "hidden" }}>
                 <Group justify="space-between" px="md">
-                  <Text fw={500}>Features</Text>
+                  <Text fw={500}>Profesi</Text>
                   <Anchor href="#" fz="xs">
                     View all
                   </Anchor>
@@ -146,17 +179,47 @@ export function HeaderMenu() {
                 </div>
               </HoverCard.Dropdown>
             </HoverCard>
-            <a href="#" className={classes.link}>
-              Learn
-            </a>
-            <a href="#" className={classes.link}>
-              Academy
-            </a>
+            <Link to={"/lowongan-kerja"} className={classes.link}>
+              Blog
+            </Link>
+            <HoverCard
+              width={600}
+              position="bottom"
+              radius="md"
+              shadow="md"
+              withinPortal
+            >
+              <HoverCard.Target>
+                <a href="#" className={classes.link}>
+                  <Center inline>
+                    <Box component="span" mr={5}>
+                      Lowongan
+                    </Box>
+                    <IconChevronDown size={16} color={theme.colors.blue[6]} />
+                  </Center>
+                </a>
+              </HoverCard.Target>
+
+              <HoverCard.Dropdown style={{ overflow: "hidden" }}>
+                <Group justify="space-between" px="md">
+                  <Text fw={500}>Lowongan</Text>
+                  <Anchor href="#" fz="xs">
+                    View all
+                  </Anchor>
+                </Group>
+
+                <Divider my="sm" />
+
+                <SimpleGrid cols={2} spacing={0}>
+                  {linkLowongan}
+                </SimpleGrid>
+              </HoverCard.Dropdown>
+            </HoverCard>
           </Group>
 
           <Group visibleFrom="sm">
             <Button variant="default">Log in</Button>
-            <Button>Sign up</Button>
+            <Button >Sign up</Button>
           </Group>
 
           <Burger
@@ -185,7 +248,7 @@ export function HeaderMenu() {
           <UnstyledButton className={classes.link} onClick={toggleLinks}>
             <Center inline>
               <Box component="span" mr={5}>
-                Features
+                Profesi
               </Box>
               <IconChevronDown size={16} color={theme.colors.blue[6]} />
             </Center>
